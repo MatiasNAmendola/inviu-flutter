@@ -21,7 +21,6 @@ class SignInForm extends StatelessWidget {
                 FlushbarHelper.createError(
                   message: failure.map(
                     // Use localized strings here in your apps
-                    cancelledByUser: (_) => 'Cancelled',
                     serverError: (_) => 'Server error',
                     emailAlreadyInUse: (_) => 'Email already in use',
                     invalidEmailAndPasswordCombination: (_) =>
@@ -97,31 +96,22 @@ class SignInForm extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: FlatButton(
-                      onPressed: () => context.bloc<SignInFormBloc>().add(
-                          const SignInFormEvent
-                              .signInWithEmailAndPasswordPressed()),
+                      onPressed: () => context
+                          .bloc<SignInFormBloc>()
+                          .add(const SignInFormEvent.signIn()),
                       child: const Text('SIGN IN'),
                     ),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: FlatButton(
-                      onPressed: () => context.bloc<SignInFormBloc>().add(
-                          const SignInFormEvent
-                              .registerWithEmailAndPasswordPressed()),
+                      onPressed: () => context
+                          .bloc<SignInFormBloc>()
+                          .add(const SignInFormEvent.register()),
                       child: const Text('REGISTER'),
                     ),
                   ),
                 ],
-              ),
-              RaisedButton(
-                onPressed: () => context
-                    .bloc<SignInFormBloc>()
-                    .add(const SignInFormEvent.signInWithGooglePressed()),
-                color: Colors.lightBlue,
-                child: const Text(
-                  'SIGN IN WITH GOOGLE',
-                ).textColor(Colors.white).bold(),
               ),
               if (state.isSubmitting) ...[
                 const SizedBox(height: 8),

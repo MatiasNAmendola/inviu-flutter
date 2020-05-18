@@ -15,7 +15,7 @@ class Router {
   static const signInPage = '/sign-in-page';
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    // final args = settings.arguments;
+    final args = settings.arguments;
     switch (settings.name) {
       case Router.splashPage:
         return MaterialPageRoute<dynamic>(
@@ -32,7 +32,3 @@ class Router {
     }
   }
 }
-
-//**************************************************************************
-// Arguments holder classes
-//***************************************************************************

@@ -40,25 +40,15 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           authFailureOrSuccessOption: none(),
         );
       },
-      registerWithEmailAndPasswordPressed: (e) async* {
+      register: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.registerWithEmailAndPassword,
+          _authFacade.register,
         );
       },
-      signInWithEmailAndPasswordPressed: (e) async* {
+      signIn: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(
-          _authFacade.signInWithEmailAndPassword,
+          _authFacade.signIn,
         );
-      },
-      signInWithGooglePressed: (e) async* {
-        yield state.copyWith(
-          isSubmitting: true,
-          authFailureOrSuccessOption: none(),
-        );
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
-        yield state.copyWith(
-            isSubmitting: false,
-            authFailureOrSuccessOption: some(failureOrSuccess));
       },
     );
   }
