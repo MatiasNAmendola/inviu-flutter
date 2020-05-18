@@ -5,7 +5,6 @@ import 'package:inviu_flutter/domain/auth/user.dart';
 import 'package:inviu_flutter/domain/auth/value_objects.dart';
 
 abstract class IAuthFacade {
-  Future<Option<User>> getSignedInUser();
   Future<Either<AuthFailure, Unit>> register({
     @required EmailAddress emailAddress,
     @required Password password,
